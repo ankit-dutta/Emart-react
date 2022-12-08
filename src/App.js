@@ -1,9 +1,12 @@
 import React,{useState} from "react";
+import {Route} from 'react-router-dom';
 import Cart from "./component/Cart/Cart";
 import Footer from "./component/Layout/Footer";
 
 import Header from "./component/Layout/Header";
 import Products from "./component/Product/Products";
+import About from "./pages/About";
+import Home from "./pages/Home";
 import CartProvider from "./store/CartProvider";
 
 
@@ -19,16 +22,36 @@ function App() {
   }
   
   return (
+
     <CartProvider>
+
+      {/* NAVBAR AND CART ------- */}
      { cartIsShown && <Cart onHideCart = {hideCartHandler} />}
 
      <Header onShowCart = {showCartHandler} />
+
+        {/* Routes ------ */}
+            <main>
+              <Route path = '/' exact>
+                <Home />
+              </Route>
+            </main>
+
+
+            <main>
+              <Route path = '/about' exact>
+                <About />
+              </Route>
+            </main>
+          
+          <main>
+            <Route path = '/store' exact>
+              <Products />
+            </Route>
+          </main>
+        
    
-   <main>
-    <Products />
-   </main>
- 
-   
+   {/* Footer--------- */}
    <Footer />
    
     </CartProvider>

@@ -1,7 +1,7 @@
 import classes from './Header.module.css';
 import emartImage from '../../assets/emartimage.avif';
 import HeaderCartButton from './HeaderCartButton';
-
+import {NavLink} from 'react-router-dom'
 
 const Header = (props) =>{
     return(
@@ -11,9 +11,15 @@ const Header = (props) =>{
             
         <div >
             <ul className='fw-bolder' style={{display:"flex" ,justifyContent:"space-between",width:"200%",listStyle:"none", marginTop:"14px"}}>
-                <li>HOME</li>
-                <li>STORE</li>
-                <li>ABOUT</li>
+                <li>
+                    <NavLink to = '/'>HOME</NavLink>                   
+                </li>
+                <li>
+                    <NavLink to = '/store'>STORE</NavLink>                   
+                </li>
+                <li>
+                    <NavLink to = '/about'>ABOUT</NavLink>                   
+                </li>
             </ul>
         </div>
 
