@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import {Route} from 'react-router-dom';
+import {Route ,Switch} from 'react-router-dom';
 import Cart from "./component/Cart/Cart";
 import Footer from "./component/Layout/Footer";
 
@@ -8,6 +8,7 @@ import Products from "./component/Product/Products";
 import About from "./pages/About";
 import Contactus from "./pages/Contactus";
 import Home from "./pages/Home";
+import ProductDetail from "./pages/ProductDetail";
 import CartProvider from "./store/CartProvider";
 
 
@@ -44,28 +45,33 @@ function App() {
 
         {/* Routes ------ */}
             <main>
+              <Switch >
               <Route path = '/' exact>
                 <Home />
               </Route>
-            </main>
+           
 
 
-            <main>
+           
               <Route path = '/about' exact>
                 <About />
               </Route>
-            </main>
           
-          <main>
+          
+        
             <Route path = '/store' exact>
               <Products />
             </Route>
-          </main>
 
-          <main>
+            <Route path= '/store/:storeId' exact>
+              <ProductDetail />
+            </Route>
+          
+        
             <Route path = '/contact' exact>
               <Contactus onAddQuery = {addQueryHandler} />
             </Route>
+            </Switch>
           </main>
         
    

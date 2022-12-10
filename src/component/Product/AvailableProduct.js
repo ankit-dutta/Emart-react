@@ -51,7 +51,7 @@ const AvailableProduct = () =>{
     const productlist = productsArr.map((item)=>(
         <>
         <div style={{display:"flex"}}>
-        <ProductItem key = {item.id} title = {item.title} imageUrl = {item.imageUrl} price = {item.price} />
+        <ProductItem key = {item.id} id ={item.id} title = {item.title} imageUrl = {item.imageUrl} price = {item.price} />
      </div>
     </>
     

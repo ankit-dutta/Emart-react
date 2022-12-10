@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import ProductItemButton from "./ProductItemButton";
 
 
@@ -6,10 +8,10 @@ const ProductItem = (props) =>{
 
     return(
     <>
-    <li className="container mb-5 list-unstyled">
+   <li className="container mb-5 list-unstyled"> <Link to = {`/store/${props.id}`}>
       
-
-<div className="" style={{display:"flex",flexWrap:'wrap'}}>
+             
+               <div className="" style={{display:"flex",flexWrap:'wrap'}}>
                 <div className="card" style={{width:"18rem"}}>
                 <h4 className="card-title">{props.title}</h4>
                 <img src={props.imageUrl} class="card-img-top"
@@ -26,7 +28,7 @@ const ProductItem = (props) =>{
 
 
 
-    </li>
+      </Link> </li> 
     </>
     
     )
