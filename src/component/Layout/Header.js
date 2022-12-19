@@ -16,40 +16,41 @@ const Header = (props) =>{
             
         <div >
             <ul className='fw-bolder' style={{display:"flex" ,justifyContent:"space-between",width:"200%",listStyle:"none", marginTop:"14px"}}>
-               
+
+
+                {!isLoggedIn && 
                    <li>
                    <NavLink to = '/auth'>Login</NavLink>                   
-               </li>
+                  </li>
+                }
+                    
                 
+                {isLoggedIn && 
+                   <li>
+                   <NavLink to = '/'>HOME</NavLink>                   
+                  </li>
+                }
 
+                {isLoggedIn && 
+                  <li>
+                  <NavLink to = '/store'>STORE</NavLink>                   
+                  </li>
+                }
+                  
                 
+                {isLoggedIn && 
+                     <li>
+                     <NavLink to = '/about'>ABOUT</NavLink>                   
+                     </li>
+                }
+                   
+                {isLoggedIn &&
                     <li>
-                    <NavLink to = '/'>HOME</NavLink>                   
-                   </li>
+                    <NavLink to = '/contact'>Contact Us</NavLink>                   
+                    </li>
+                }
                 
-
-               
                 
-                <li>
-                <NavLink to = '/store'>STORE</NavLink>                   
-                 </li>
-          
-                
-
-               
-                 <li>
-                 <NavLink to = '/about'>ABOUT</NavLink>                   
-                 </li>
-                
-           
-          
-                <li>
-                <NavLink to = '/contact'>Contact Us</NavLink>                   
-            </li>
-           
-           
-               
-               
 
                 
             </ul>
@@ -58,9 +59,9 @@ const Header = (props) =>{
         <div style={{marginLeft:"40%"}}>
        <HeaderCartButton onShowCart = {props.onShowCart} />
 
-       {/* {isLoggedIn && 
+       {isLoggedIn && 
         <button>Logout</button>
-        } */}
+        }
         </div>
 
      
