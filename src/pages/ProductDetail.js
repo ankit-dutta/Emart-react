@@ -6,12 +6,24 @@ import { useContext } from "react";
 const ProductDetail = (props)=>{
     const params = useParams()
     const cartctx = useContext(CartContext)
+    const existingitem = [cartctx.items];
+
+    console.log(existingitem ,'existingitem')
+
+
+
         return(
             <>
             {/* <h1>this is productdetail page</h1> */}
                 {/* <h3>{params.storeId}</h3> */}
                
-
+            {cartctx.items.map((el)=>{
+              return(
+                <>
+                <h1>{el.title}</h1>
+                </>
+              )
+            })}
                
         <section className={classes.section}>
             <h5>{props.title}</h5>
@@ -34,7 +46,7 @@ const ProductDetail = (props)=>{
           <p> Excellent will buy again</p>
          
           </div>
-          <h1>More products like this</h1>
+          {/* <h1>More products like this</h1> */}
         </section>
   
         <h1 className={classes.title}>COLOURS</h1>

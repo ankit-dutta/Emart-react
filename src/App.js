@@ -8,6 +8,7 @@ import Products from "./component/Product/Products";
 import About from "./pages/About";
 import Contactus from "./pages/Contactus";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 import ProductDetail from "./pages/ProductDetail";
 import CartProvider from "./store/CartProvider";
 
@@ -70,6 +71,10 @@ function App() {
         
             <Route path = '/contact' exact>
               <Contactus onAddQuery = {addQueryHandler} />
+            </Route>
+
+            <Route path = '/auth' exact>
+              <Login onAddQuery = {addQueryHandler} />
             </Route>
             </Switch>
           </main>
