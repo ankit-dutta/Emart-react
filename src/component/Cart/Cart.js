@@ -1,3 +1,4 @@
+import axios from "axios"
 import { useContext ,useState} from "react"
 import CartContext from "../../store/CartContext"
 import Modal from "../UI/Modal"
@@ -9,12 +10,16 @@ const Cart = (props) =>{
     const [cartItem, setCartItem] = useState([]);
    const [quantity, setQuantity] = useState(); 
 
-
+  let email = localStorage.getItem("email").replace(".","").replace("@","");
    const cartctx = useContext(CartContext);
    const existingItems = [...cartctx.items]
 
+
+
    const removeFromCart =(id)=>{
      cartctx.removeItem(id);
+     axios.delete(`https://crudcrud.com/api/a1ddeb5640444fcd8b57187e367fc294/cart${email}/${id}`)
+    //  console.log(id)
    setCartItem(cartItem => 
       cartItem.map((item) => id === item.id ? {...item, quantity:item.quantity - 1}:item
       )
@@ -22,9 +27,13 @@ const Cart = (props) =>{
     }
 
     const addToCart =(item)=>{
+        // console.log(item.id)
         const itemIdx = existingItems.findIndex((i) => i.id === item.id)
         const updatedList = existingItems[itemIdx].quantity++;
         setQuantity(updatedList)
+        cartctx.addItem(props)
+        
+        
     }
 
 

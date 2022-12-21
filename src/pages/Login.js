@@ -120,6 +120,7 @@ const Login = () => {
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
+    localStorage.setItem('email',enteredEmail);
 
     // optional: Add validation
 
@@ -151,9 +152,9 @@ const Login = () => {
           return res.json().then((data) => {
             let errorMessage  = 'authentication failed'
 
-            // if(data && data.error && data.error.message){
-            //   errorMessage = data.error.message
-            // }
+            if(data && data.error && data.error.message){
+              errorMessage = data.error.message
+            }
                alert(errorMessage);
                throw new Error(errorMessage)
 

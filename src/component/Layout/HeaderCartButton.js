@@ -1,4 +1,5 @@
-import React,{useContext} from "react";
+import axios from "axios";
+import React,{useContext,useEffect} from "react";
 import CartContext from "../../store/CartContext";
 
 
@@ -6,10 +7,21 @@ const HeaderCartButton =(props)=>{
 
     const cartctx = useContext(CartContext)
 
+
+    // let email = localStorage.getItem("email").replace(".","").replace("@","");
+
+    // useEffect(()=>{
+    //     axios.get(`https://crudcrud.com/api/a1ddeb5640444fcd8b57187e367fc294/cart${email}`).then((res)=>{
+    //        cartctx.initilizeCart(res.data)
+    //     })
+    // },[])
+
     let quantity = 0;
     cartctx.items.forEach((item)=>{
         console.log(item ,'----items----')
+        // localStorage.setItem("cartitem",item)
         quantity = quantity + Number(item.quantity)
+        
     })
 
 

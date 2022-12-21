@@ -1,4 +1,7 @@
-import React from "react";
+import axios from "axios";
+import React, { useContext, useEffect } from "react";
+import CartContext from "../../store/CartContext";
+import Cart from "../Cart/Cart";
 import Card from "../UI/Card";
 import ProductItem from "./ProductItem";
 
@@ -47,7 +50,20 @@ const productsArr = [
     
     ]
 
+   
+
 const AvailableProduct = () =>{
+    const cartctx = useContext(CartContext);
+
+    let email = localStorage.getItem("email").replace(".","").replace("@","");
+
+    useEffect(()=>{
+        axios.get(`https://crudcrud.com/api/a1ddeb5640444fcd8b57187e367fc294/cart${email}`).then((res)=>{
+           cartctx.initilizeCart(res.data)
+        })
+    },[])
+
+
     const productlist = productsArr.map((item)=>(
         <>
         <div style={{display:"flex"}}>

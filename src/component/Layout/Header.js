@@ -7,8 +7,16 @@ import AuthContext from '../../store/auth-context';
 
 const Header = (props) =>{
    const authCtx =  useContext(AuthContext)
+   const history  = useHistory()
 
    const isLoggedIn = authCtx.isLoggedIn
+
+   const logoutHandler = () =>{
+        authCtx.logout();
+        history.replace('/auth')
+   }
+
+
     return(
         <>
         <header className={classes.header}>
@@ -60,7 +68,7 @@ const Header = (props) =>{
        <HeaderCartButton onShowCart = {props.onShowCart} />
 
        {isLoggedIn && 
-        <button>Logout</button>
+        <button onClick={logoutHandler}>Logout</button>
         }
         </div>
 
