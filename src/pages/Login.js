@@ -127,10 +127,10 @@ const Login = () => {
     setIsLoading(true);
     let url;
     if (isLogin) {
-       url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDYxq4WaZDgmM3RjTHlQi8JbYnCHz0aYjI'
+       url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_FIREBASE_KEY}`
 
     } else {
-      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDYxq4WaZDgmM3RjTHlQi8JbYnCHz0aYjI'
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_FIREBASE_KEY}`
 
     }
     fetch(url, {

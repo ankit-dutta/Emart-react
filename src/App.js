@@ -1,18 +1,26 @@
-import React,{useContext, useEffect, useState} from "react";
+import React,{Suspense, useContext, useEffect, useState} from "react";
 import {Redirect, Route ,Switch} from 'react-router-dom';
 import Cart from "./component/Cart/Cart";
 import Footer from "./component/Layout/Footer";
 import axios from "axios";
 import Header from "./component/Layout/Header";
-import Products from "./component/Product/Products";
-import About from "./pages/About";
-import Contactus from "./pages/Contactus";
-import Home from "./pages/Home";
+// import Products from "./component/Product/Products";
+// import About from "./pages/About";
+// import Contactus from "./pages/Contactus";
+// import Home from "./pages/Home";
 import Login from "./pages/Login";
 import ProductDetail from "./pages/ProductDetail";
 import AuthContext from "./store/auth-context";
 import CartContext from "./store/CartContext";
 import CartProvider from "./store/CartProvider";
+
+const Home = React.lazy(()=> import('./pages/Home'));
+const Contactus = React.lazy(()=> import('./pages/Contactus'));
+const About = React.lazy(()=> import('./pages/About'));
+const Products = React.lazy(()=> import('./component/Product/Products'));
+// const Cart = React.lazy(()=> import('./component/Cart/Cart'));
+
+
 
 
 function App() {
@@ -76,53 +84,54 @@ function App() {
      <Header onShowCart = {showCartHandler} />
 
         {/* Routes ------ */}
-            <main>
+          <main>
+            <Suspense fallback = {<div className="centered">Loading...</div>}>
               <Switch >
-              <Route path = '/' exact>
-                <Home />
-              </Route>
-           
+                  <Route path = '/' exact>
+                    <Home />
+                  </Route>
+              
 
 
-              {isLoggedIn &&
-                 <Route path = '/about' exact>
-                 <About />
-               </Route>
+                  {isLoggedIn &&
+                    <Route path = '/about' exact>
+                    <About />
+                  </Route>
 
-              }
-             
-          
-          
-          {isLoggedIn &&
-            <Route path = '/store' exact>
-            <Products />
-          </Route>
-          }
-            
-          {isLoggedIn &&
-            <Route path= '/store/:storeId' exact>
-            <ProductDetail />
-            </Route>
-          }
-            
-          
-          {isLoggedIn &&
-            <Route path = '/contact' exact>
-            <Contactus onAddQuery = {addQueryHandler} />
-             </Route>
-          }
-            
+                  }
+                
+              
+              
+                  {isLoggedIn &&
+                    <Route path = '/store' exact>
+                    <Products />
+                  </Route>
+                  }
+                    
+                  {isLoggedIn &&
+                    <Route path= '/store/:storeId' exact>
+                    <ProductDetail />
+                    </Route>
+                  }
+                    
+                  
+                  {isLoggedIn &&
+                    <Route path = '/contact' exact>
+                    <Contactus onAddQuery = {addQueryHandler} />
+                    </Route>
+                  }
+                
 
-            <Route path = '/auth' exact>
-              <Login onAddQuery = {addQueryHandler} />
-            </Route>
+                  <Route path = '/auth' exact>
+                    <Login onAddQuery = {addQueryHandler} />
+                  </Route>
 
-            <Route path='*'>
-              <Redirect to = "/"></Redirect>
-            </Route>
+                  <Route path='*'>
+                    <Redirect to = "/"></Redirect>
+                  </Route>
 
-            </Switch>
-
+              </Switch>
+            </Suspense>
           </main>
         
    

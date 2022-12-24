@@ -12,6 +12,7 @@
     padding: 0 2%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     z-index: 10;
+    
   }
   
   .main-image {
@@ -25,5 +26,61 @@
     width: 110%;
     height: 170%;
     object-fit:cover
-    /* transform: rotateZ(-5deg) translateY(-4rem) translateX(-1rem); */
   }
+
+  .navelements{
+   
+    width: 250%;
+    height: 3rem;
+    background-color: #15c4ca;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2%;
+    margin-top: 10%;
+
+    
+  }
+
+  .navbtns{
+   text-decoration: none;
+   color: rgb(247, 230, 230);
+   font-size: 1.2rem;
+   font-weight: 500;
+   transition: 0.2s ease-in-out;
+  }
+
+  .navbtns:hover{
+    border-bottom: 2px solid gray;
+    font-size: 1.3rem;
+    color: white;
+  }
+
+
+  .loginbtn{
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border: 1px solid black;
+    background-color: black;
+    width: 6rem;
+    height: 2.5rem;
+   /* align-items: center; */
+   margin-top: -17px;
+
+  }
+
+  .loginbtn:hover{
+    color: white;
+   
+ }
+
+  .loginbtn:active{
+     color: white;
+     transform: translateY(4px);
+
+  }
+
+  

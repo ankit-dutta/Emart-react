@@ -22,40 +22,43 @@ const Header = (props) =>{
         <header className={classes.header}>
             <h1>Emart</h1>
             
-        <div >
-            <ul className='fw-bolder' style={{display:"flex" ,justifyContent:"space-between",width:"200%",listStyle:"none", marginTop:"14px"}}>
+        <div className={classes.navcontainer} >
+            <ul className={classes.navelements} style={{}}>
 
 
-                {!isLoggedIn && 
-                   <li>
-                   <NavLink to = '/auth'>Login</NavLink>                   
-                  </li>
-                }
+              
                     
                 
-                {isLoggedIn && 
+                {/* {isLoggedIn &&  */}
                    <li>
-                   <NavLink to = '/'>HOME</NavLink>                   
+                   <NavLink to = '/' className={classes.navbtns}>HOME</NavLink>                   
                   </li>
-                }
+                {/* } */}
 
-                {isLoggedIn && 
+                {/* {isLoggedIn &&  */}
                   <li>
-                  <NavLink to = '/store'>STORE</NavLink>                   
+                  <NavLink to = '/store' className={classes.navbtns}>STORE</NavLink>                   
                   </li>
-                }
+                {/* } */}
                   
                 
-                {isLoggedIn && 
+                {/* {isLoggedIn &&  */}
                      <li>
-                     <NavLink to = '/about'>ABOUT</NavLink>                   
+                     <NavLink to = '/about' className={classes.navbtns}>ABOUT</NavLink>                   
                      </li>
-                }
+                {/* } */}
                    
-                {isLoggedIn &&
+                {/* {isLoggedIn && */}
                     <li>
-                    <NavLink to = '/contact'>Contact Us</NavLink>                   
+                    <NavLink to = '/contact' className={classes.navbtns}>Contact Us</NavLink>                   
                     </li>
+                {/* } */}
+
+                {!isLoggedIn && 
+                   <button className={classes.loginbtn}>
+                    
+                   <NavLink to = '/auth' className={classes.loginbtn}>Login</NavLink>                   
+                  </button>
                 }
                 
                 
@@ -65,7 +68,9 @@ const Header = (props) =>{
         </div>
 
         <div style={{marginLeft:"40%"}}>
-       <HeaderCartButton onShowCart = {props.onShowCart} />
+        {isLoggedIn && 
+         <HeaderCartButton onShowCart = {props.onShowCart} />
+        }
 
        {isLoggedIn && 
         <button onClick={logoutHandler}>Logout</button>
